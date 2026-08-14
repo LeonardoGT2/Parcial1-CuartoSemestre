@@ -123,8 +123,17 @@ public class GestionEmpleados {
 	 * </ul>
 	 */
 	public Empleado empleadoConMayorSalario() {
-		// TODO: completar
-		return null;
+	    if (cantidad == 0) {
+	        return null;
+	    }
+
+	    Empleado mejor = empleados[0];
+	    for (int i = 1; i < cantidad; i++) {
+	        if (empleados[i].calcularSalarioMensual() > mejor.calcularSalarioMensual()) {
+	            mejor = empleados[i];
+	        }
+	    }
+	    return mejor;
 	}
 
 	/**
