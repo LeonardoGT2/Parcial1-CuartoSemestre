@@ -170,7 +170,37 @@ public class GestionEmpleados {
 	 * </ul>
 	 */
 	public void mostrarConteoPorTipo() {
-		// TODO: completar
+	    if (cantidad == 0) {
+	        return;
+	    }
+
+	    String[] tipos = new String[cantidad];
+	    int[] conteos = new int[cantidad];
+	    int tiposDistintos = 0;
+
+	    for (int i = 0; i < cantidad; i++) {
+	        String tipoActual = empleados[i].getTipo();
+
+	        int posicion = -1;
+	        for (int j = 0; j < tiposDistintos; j++) {
+	            if (tipos[j].equals(tipoActual)) {
+	                posicion = j;
+	                break;
+	            }
+	        }
+
+	        if (posicion == -1) {
+	            tipos[tiposDistintos] = tipoActual;
+	            conteos[tiposDistintos] = 1;
+	            tiposDistintos++;
+	        } else {
+	            conteos[posicion]++;
+	        }
+	    }
+
+	    for (int i = 0; i < tiposDistintos; i++) {
+	        System.out.println(tipos[i] + ": " + conteos[i]);
+	    }
 	}
 
 	/**
